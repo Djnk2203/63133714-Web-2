@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
-    <!-- Bao gồm các file CSS và JavaScript của Bootstrap -->
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <!-- Navbar Bootstrap menu -->
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Tên trang</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
         </div>
     </nav>
 
-    <!-- Carousel Bootstrap -->
+    
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" th:each="image : ${carouselImages}">
@@ -35,21 +35,25 @@
         </div>
     </div>
 
-    <!-- Cards Bootstrap -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4" th:each="student : ${students}">
-                <div class="card">
-                    <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${student.name}">Tên sinh viên</h5>
-                        <p class="card-text" th:text="${student.class}">Lớp</p>
-                        <p class="card-text" th:text="${student.major}">Khoa</p>
-                        <p class="card-text" th:text="${student.university}">Trường</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    <h1>Danh sách điểm</h1>
+    <ul>
+        <li th:each="diem : ${diems}">
+            <span th:text="${diem.ma}"></span> - <span th:text="${diem.ten}"></span> - <span th:text="${diem.diem}"></span>
+        </li>
+    </ul>
+    
+    <a href="/danh-sach-diem">Xem danh sách điểm</a>
+ <h1>Thêm điểm mới</h1>
+    <form action="/them-diem" method="post" th:object="${diem}">
+        <label>Mã:</label>
+        <input type="text" th:field="*{ma}"/><br/>
+        <label>Tên:</label>
+        <input type="text" th:field="*{ten}"/><br/>
+        <label>Điểm:</label>
+        <input type="text" th:field="*{diem}"/><br/>
+        <input type="submit" value="Thêm"/>
+    </form>
+    <a href="/them-diem">Thêm điểm mới</a>
 </body>
 </html>

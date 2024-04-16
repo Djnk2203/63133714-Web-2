@@ -3369,3 +3369,27 @@ END
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-04-16 15:23:34.217
 !MESSAGE Started org.springframework.tooling.boot.ls LS process 8272
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-16 15:43:03.608
+!MESSAGE Classpath changed for project: QuanlyChungCu
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-16 15:43:03.610
+!MESSAGE Boot project ADDED: QuanlyChungCu
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-16 15:43:05.475
+!MESSAGE Classpath changed for project: QuanlyChungCu
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-16 15:43:08.843
+!MESSAGE Classpath changed for project: QuanlyChungCu
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-16 15:43:30.859
+!MESSAGE Classpath changed for project: QuanlyChungCu
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-16 15:59:20.070
+!MESSAGE Classpath changed for project: Do_An_Cuoi_ky
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-16 15:59:21.935
+!MESSAGE Classpath changed for project: Do_An_Cuoi_ky
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-04-16 15:59:21.936
+!MESSAGE Boot project ADDED: Do_An_Cuoi_ky

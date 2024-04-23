@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 23, 2024 lúc 10:27 AM
+-- Thời gian đã tạo: Th4 23, 2024 lúc 11:05 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `qlpks`
+-- Cơ sở dữ liệu: `qlpks1`
 --
 
 -- --------------------------------------------------------
@@ -56,7 +56,7 @@ CREATE TABLE `nhanvien` (
   `CMND` varchar(12) NOT NULL,
   `TenDN` varchar(255) NOT NULL,
   `MK` varchar(255) NOT NULL,
-  `TenTP` varchar(255) NOT NULL
+  `DiaChi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -67,11 +67,10 @@ CREATE TABLE `nhanvien` (
 
 CREATE TABLE `phong` (
   `MaPhong` int(11) NOT NULL,
-  `Tang` int(11) NOT NULL,
   `LoaiPhong` varchar(50) NOT NULL,
   `SoNguoi` int(11) NOT NULL,
   `Gia` decimal(10,2) NOT NULL,
-  `HinhAnh` varchar(255) DEFAULT NULL
+  `TinhTrang` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -86,8 +85,8 @@ CREATE TABLE `thuephong` (
   `MaPhong` int(11) NOT NULL,
   `NgayNhan` date NOT NULL,
   `NgayTra` date DEFAULT NULL,
-  `Tien` decimal(10,2) NOT NULL,
-  `DatOrNhan` varchar(10) DEFAULT NULL
+  `SoNguoi` int(11) NOT NULL,
+  `Tien` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -118,7 +117,9 @@ ALTER TABLE `phong`
 -- Chỉ mục cho bảng `thuephong`
 --
 ALTER TABLE `thuephong`
-  ADD PRIMARY KEY (`MaHD`);
+  ADD PRIMARY KEY (`MaHD`),
+  ADD KEY `MaNV` (`MaNV`),
+  ADD KEY `MaPhong` (`MaPhong`);
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -130,6 +131,13 @@ ALTER TABLE `thuephong`
 ALTER TABLE `hoadon`
   ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`),
   ADD CONSTRAINT `hoadon_ibfk_2` FOREIGN KEY (`MaPhong`) REFERENCES `phong` (`MaPhong`);
+
+--
+-- Các ràng buộc cho bảng `thuephong`
+--
+ALTER TABLE `thuephong`
+  ADD CONSTRAINT `thuephong_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNV`),
+  ADD CONSTRAINT `thuephong_ibfk_2` FOREIGN KEY (`MaPhong`) REFERENCES `phong` (`MaPhong`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
